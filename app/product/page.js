@@ -27,15 +27,18 @@ const ProductPage = (props) => {
   return (
     <div className='flex flex-col p-4'>
       <div className='grid grid-cols-1 md:grid-cols-2 w-full max-w-[1000px] mx-auto'>
-        <div className='md:p-2 md:shadow'>
-          <Image
-            className='w-full h-full object-cover'
-            src={productInfo.images[0]}
-            alt={product.name}
-            height={300}
-            width={300}
-          />
-        </div>
+        {productInfo?.images[0] && (
+          <div className='md:p-2 md:shadow'>
+            <Image
+              className='w-full h-full object-cover'
+              src={productInfo?.images[0]}
+              alt={product.name}
+              height={300}
+              width={300}
+            />
+          </div>
+        )}
+
         <div className='flex flex-col gap-2 p-4'>
           <div className='flex items-center justify-between text-xl md:flex-col md:items-start gap-2'>
             <h3>{name}</h3>
