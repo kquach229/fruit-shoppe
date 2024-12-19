@@ -17,6 +17,7 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@types/react": "^19.0.2",
     "autoprefixer": "^10",
     "postcss": "^8",
     "tailwindcss": "^3",
