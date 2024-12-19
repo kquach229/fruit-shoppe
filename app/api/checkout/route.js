@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 export async function POST(req) {
-  // if (req.method !== 'POST') return res.sendStatus(405);
-
   const body = await req.json();
-  if (body.lineItems.length === 0) {
-    return new Response('error', {
-      status: 405,
-    });
+
+  if (!body.lineItems || body.lineItems.length === 0) {
+    return NextResponse.json(
+      { error: 'No line items provided' },
+      { status: 400 }
+    );
   }
 
   try {
@@ -25,9 +25,7 @@ export async function POST(req) {
 
     return NextResponse.json({ session });
   } catch (error) {
-    console.error('error: ', error);
-    return new Response('error', {
-      status: 405,
-    });
+    console.error('Error creating checkout session:', error.message);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
