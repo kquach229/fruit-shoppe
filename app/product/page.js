@@ -11,7 +11,7 @@ const ProductPage = (props) => {
   const { cost, productInfo, name, description } = product;
 
   if (!product?.name) {
-    window.location.href = '/';
+    if (typeof window !== 'undefined') window.location.href = '/';
   }
 
   const handleAddToCart = () => {
